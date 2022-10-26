@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jeffryang24/asdf-spark/compare/v1.0.0...v1.0.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* **utils:** fix without-hadoop env variable pattern matching ([4fc81da](https://github.com/jeffryang24/asdf-spark/commit/4fc81da80add1c9d960592dfc5f7229af36ba456))
+
 ## 1.0.0 (2022-10-26)
 
 

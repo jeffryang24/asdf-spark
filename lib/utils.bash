@@ -213,7 +213,7 @@ download_sha_checksum() {
   local spark_version="${1:-}"
   local archive_filepath="${2:-}"
   local archive_filename="${archive_filepath##*/}"
-  local checksum_exts=({sha512,sha})
+  local checksum_exts=({'sha512','sha'})
   local archive_download_url checksum_content normalized_checksum_content
 
   archive_download_url="$(construct_release_archive_url "${spark_version}" "${archive_filename}")"

@@ -204,24 +204,39 @@ normalize_checksum() {
 #
 # Arguments:
 #   $1 - Apache Spark version.
-#   $2 - Archive filename.
+#   $2 - Archive filepath.
 # Outputs:
 #   Return a valid checksum value format separated by double space,
 #   e.g. <hash>  <filename>
 ##################################################################
 download_sha_checksum() {
   local spark_version="${1:-}"
-  local archive_filename="${2:-}"
+  local archive_filepath="${2:-}"
+  local archive_filename="${archive_filepath##*/}"
   local checksum_exts=({sha512,sha})
   local archive_download_url checksum_content normalized_checksum_content
 
   archive_download_url="$(construct_release_archive_url "${spark_version}" "${archive_filename}")"
 
   for ext in "${checksum_exts[@]}"; do
-    if checksum_content="$(curl "${DEFAULT_CURL_OPTS[@]}" "${archive_download_url}.${ext}")"; then
+    local current_url="${archive_download_url}.${ext}"
+
+    echo "* Verify using ${current_url}"
+
+    if checksum_content="$(curl "${DEFAULT_CURL_OPTS[@]}" "${current_url}")"; then
+      echo "* Checksum is available. Verify against it..."
       break
     fi
+
+    echo "* Checksum from ${current_url} is not available, continue using another checksum..."
   done
+
+  # Fail-fast if checksum_content is still empty (no checksum available).
+  if [[ -z "${checksum_content}" ]]; then
+    rm "${archive_filepath}"
+    fail "Can't verify archive checksum. If this error persist, then you can set ASDF_SPARK_SKIP_VERIFICATION \
+value to true to skip this verification step."
+  fi
 
   # Normalize downloaded checksum file content.
   normalized_checksum_content="$(normalize_checksum "${checksum_content}")"
@@ -257,7 +272,7 @@ validate_sha_checksum() {
   cd "$(dirname "${archive_filepath}")"
 
   echo "* Verifying ${archive_filename}..."
-  checksum="$(download_sha_checksum "${spark_version}" "${archive_filename}")"
+  checksum="$(download_sha_checksum "${spark_version}" "${archive_filepath}")"
   if ! echo "${checksum}" | shasum --algorithm "${DEFAULT_SHASUM_ALGORITHM}" --check; then
     fail "Checksum validation failed! Abort installation."
   fi

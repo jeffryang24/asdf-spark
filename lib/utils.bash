@@ -221,14 +221,9 @@ download_sha_checksum() {
   for ext in "${checksum_exts[@]}"; do
     local current_url="${archive_download_url}.${ext}"
 
-    echo "* Verify using ${current_url}"
-
-    if checksum_content="$(curl "${DEFAULT_CURL_OPTS[@]}" "${current_url}")"; then
-      echo "* Checksum is available. Verify against it..."
+    if checksum_content="$(curl -fSLv "${current_url}")"; then
       break
     fi
-
-    echo "* Checksum from ${current_url} is not available, continue using another checksum..."
   done
 
   # Fail-fast if checksum_content is still empty (no checksum available).

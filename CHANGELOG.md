@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/jeffryang24/asdf-spark/compare/v1.0.1...v1.1.0) (2022-10-28)
+
+
+### Features
+
+* **download:** introduce ASDF_SPARK_SKIP_VERIFICATION variable ([f9845a5](https://github.com/jeffryang24/asdf-spark/commit/f9845a5134ec7ff1f38f653720a9e138dd340834))
+* **download:** verify checksum before extracting archive ([1c0985d](https://github.com/jeffryang24/asdf-spark/commit/1c0985d59f05d0e228a81f5f503607445a481a41))
+
+
+### Bug Fixes
+
+* **utils:** fix download_sha_checksum method ([6101e72](https://github.com/jeffryang24/asdf-spark/commit/6101e729ce298e7b2c55001195574f4e5b41fd46))
+* **utils:** fix typo variable inside validate_sha_checksum ([c93867e](https://github.com/jeffryang24/asdf-spark/commit/c93867e27acd26ed8c05ae83912f6626e4785a33))
+* **utils:** fix unbound variable from download command after refactoring ([44127c7](https://github.com/jeffryang24/asdf-spark/commit/44127c77e2b57464110be5df1cbd82d267db3dea))
+
 ## [1.0.1](https://github.com/jeffryang24/asdf-spark/compare/v1.0.0...v1.0.1) (2022-10-26)
 
 

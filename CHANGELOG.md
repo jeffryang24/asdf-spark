@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/jeffryang24/asdf-spark/compare/v1.2.1...v1.2.2) (2022-11-18)
+
+
+### Bug Fixes
+
+* **script:** fix typo in autoload zsh ([d121014](https://github.com/jeffryang24/asdf-spark/commit/d121014000e90330f017d6faa07787f60d17390f))
+
 ## [1.2.1](https://github.com/jeffryang24/asdf-spark/compare/v1.2.0...v1.2.1) (2022-11-18)
 
 

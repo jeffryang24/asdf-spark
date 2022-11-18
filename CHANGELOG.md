@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/jeffryang24/asdf-spark/compare/v1.2.0...v1.2.1) (2022-11-18)
+
+
+### Bug Fixes
+
+* **scripts:** chmod 755 for set spark_home scripts ([26a510e](https://github.com/jeffryang24/asdf-spark/commit/26a510ec23ff55a0a6125734f08aa18a6def72fd))
+
 ## [1.2.0](https://github.com/jeffryang24/asdf-spark/compare/v1.1.0...v1.2.0) (2022-11-18)
 
 

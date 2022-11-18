@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/jeffryang24/asdf-spark/compare/v1.1.0...v1.2.0) (2022-11-18)
+
+
+### Features
+
+* **misc:** add set spark_home scripts ([f483e9e](https://github.com/jeffryang24/asdf-spark/commit/f483e9e87fc476fab5e29a944fc13a374dc323f9))
+
 ## [1.1.0](https://github.com/jeffryang24/asdf-spark/compare/v1.0.1...v1.1.0) (2022-10-28)
 
 
